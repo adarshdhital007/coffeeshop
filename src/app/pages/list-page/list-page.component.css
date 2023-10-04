@@ -1,0 +1,24 @@
+.cup-container {
+  position: relative;
+}
+
+.cup-container .cup-handler {
+  position: absolute;
+  top: 0;
+}
+
+.cup-container .btn-add-to-cart {
+  position: absolute;
+  bottom: -30px;
+  left: 47%;
+  transform: translateX(-50%);
+}
+
+.cup-container {
+  margin-bottom: 60px;
+}
+
+.demo {
+  position: relative;
+  left: -10px;
+}
