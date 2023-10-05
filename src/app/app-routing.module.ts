@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CupComponent } from './cup/cup.component';
+import { CupComponent } from './component/cup/cup.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { GithubPageComponent } from './pages/github-page/github-page.component';

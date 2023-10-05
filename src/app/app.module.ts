@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CupComponent } from './cup/cup.component';
+import { CupComponent } from './component/cup/cup.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { FormsModule } from '@angular/forms';

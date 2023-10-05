@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/cart.service';
-import { CoffeeService } from 'src/app/coffee.service';
+import { CartService } from 'src/app/services/cart.service';
+import { CoffeeService } from 'src/app/services/coffee.service';
 
 @Component({
   selector: 'app-list-page',
-  templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.css'],
+  templateUrl: './list-page.component.html'
 })
 export class ListPageComponent implements OnInit {
   coffeeItems: {
     name: string;
     price: string;
-    cssClass: string;
     recipe: { name: string; quantity: number }[];
   }[] = [];
 

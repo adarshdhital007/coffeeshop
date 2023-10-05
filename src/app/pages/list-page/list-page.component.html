@@ -4,16 +4,12 @@
       <div class="text-center cup-container">
         <div class="d-flex flex-column align-items-center">
           <div class="d-flex justify-content-center align-items-center mb-2">
-            <h4 class="mt-0 mb-0">
+            <h4 class="listdem mt-0 mb-0">
               {{ coffeeItem.name }} ${{ coffeeItem.price }}
             </h4>
           </div>
           <app-cup
             class="p-4"
-            [item]="coffeeItem.name"
-            [class]="coffeeItem.cssClass"
-            [disabled]="false"
-            [isBigger]="false"
             [recipe]="coffeeItem.recipe"
             (click)="addToCart(coffeeItem.name, coffeeItem.price)"
           ></app-cup>
