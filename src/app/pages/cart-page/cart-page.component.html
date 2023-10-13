@@ -54,7 +54,7 @@
       </button>
 
       <div *ngIf="showPaymentForm" class="payment-box">
-        <form (ngSubmit)="submitPaymentForm()">
+        <form (ngSubmit)="submitPaymentForm()" #paymentForm="ngForm">
           <div class="form-group">
             <label for="fullName">Full Name</label>
             <input
@@ -76,23 +76,33 @@
               class="form-control"
               required
               (ngModelChange)="onEmailChange()"
-              #emailInput="ngModel"
               pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com)"
+              #emailInput="ngModel"
+              [ngClass]="{
+                'is-invalid': emailInput.invalid && emailInput.touched
+              }"
             />
+
             <div
-              *ngIf="
-                emailInput.invalid && (emailInput.dirty || emailInput.touched)
-              "
+              *ngIf="emailInput.invalid && emailInput.touched"
               class="text-danger"
             >
-              <div *ngIf="emailInput">Valid Email is required.</div>
-              <div *ngIf="emailInput">
-                Please enter a valid email address with @gmail.com or @yahoo.com
-                or @outlook.com @hotmail.com.
+              <div *ngIf="emailInput.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="emailInput.errors?.['pattern']">
+                Please enter a valid email address with @gmail.com, @yahoo.com,
+                @outlook.com, or @hotmail.com.
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!paymentForm.form.valid"
+          >
+            Submit
+          </button>
         </form>
       </div>
       <div *ngIf="purchaseSuccessful" class="alert alert-success mt-3">
