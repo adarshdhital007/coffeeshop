@@ -1,16 +1,14 @@
-<div class="cup" [class.disabled-hover]="disabled">
+<div class="cup">
   <div
     class="cup-body"
-    [class.disabled-hover]="disabled"
-    [class.bigger]="isBigger"
   >
     <div
       *ngFor="let ingredient of recipe"
-      [class]="['ingredient', ingredient.name, 'disabled-hover']"
+      [class]="[ingredient.name]"
       [style.height.%]="ingredient.quantity"
     >
       {{ ingredient.quantity ? ingredient.name : "" }}
     </div>
   </div>
-  <div class="cup-handler" [class.disabled-hover]="disabled"></div>
+  <div class="cup-handler"></div>
 </div>

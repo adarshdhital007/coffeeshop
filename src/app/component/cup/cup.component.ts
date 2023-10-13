@@ -7,8 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class CupComponent {
   @Input() item?: string;
-  @Input() disabled: boolean = false;
-  @Input() isBigger: boolean = false;
   @Input() recipe: { name: string; quantity: number }[] = [];
 
   constructor() {
