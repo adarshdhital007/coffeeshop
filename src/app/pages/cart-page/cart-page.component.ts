@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-cart-page',
@@ -8,9 +9,11 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartPageComponent implements OnInit {
   cartItems: { [cupName: string]: { quantity: number; price: number } } = {};
   showPaymentForm: boolean = false;
+  emailChanged: boolean=true;
   fullName: string = '';
   email: string = '';
   purchaseSuccessful: boolean = false;
+
 
   constructor(private cartService: CartService) { }
 
@@ -34,10 +37,10 @@ export class CartPageComponent implements OnInit {
     this.cartService.removeFromCart(cupName);
   }
 
-  addToCart(cupName: string,price:number): void {
-    this.cartService.addToCart(cupName,price);
+  addToCart(cupName: string, price: number): void {
+    this.cartService.addToCart(cupName, price);
   }
-  
+
   getCartKeys(): string[] {
     return Object.keys(this.cartItems);
   }
@@ -46,10 +49,16 @@ export class CartPageComponent implements OnInit {
     this.showPaymentForm = !this.showPaymentForm;
   }
 
+  onEmailChange() {
+    this.emailChanged = true;
+  }
+
   submitPaymentForm(): void {
     if (this.fullName.trim() === '' || this.email.trim() === '') {
-      window.alert("Can't proceed with empty name and email. Fill out the form.");
+      window.alert("Can't proceed with either an empty name or email. Fill out the form.");
     } else {
+      this.emailChanged = true;
+
       // Simulate a successful purchase
       this.purchaseSuccessful = true;
 
@@ -57,11 +66,10 @@ export class CartPageComponent implements OnInit {
       this.cartService.clearCart();
 
       // Reset form and hide it
-      this.fullName = '';
-      this.email = '';
-      this.showPaymentForm = false;
-
-      console.log('Successfully Purchased!');
+     this.showPaymentForm=false;
+      // Now you can display the success message with the updated email
+      console.log('Successfully Purchased! Email:', this.email);
     }
   }
+
 }

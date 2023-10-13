@@ -75,13 +75,28 @@
               [(ngModel)]="email"
               class="form-control"
               required
+              (ngModelChange)="onEmailChange()"
+              #emailInput="ngModel"
+              pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com)"
             />
+            <div
+              *ngIf="
+                emailInput.invalid && (emailInput.dirty || emailInput.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="emailInput">Valid Email is required.</div>
+              <div *ngIf="emailInput">
+                Please enter a valid email address with @gmail.com or @yahoo.com
+                or @outlook.com @hotmail.com.
+              </div>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
       <div *ngIf="purchaseSuccessful" class="alert alert-success mt-3">
-        Successfully Purchased!
+        Successfully Purchased! The receipt has been sent to {{ this.email }}
       </div>
     </div>
   </div>
